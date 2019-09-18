@@ -10,10 +10,16 @@ schedules:
   always: true
 
 steps:
+- checkout: self
+  persistCredentials: true
+  clean: true
 - task: Bash@3
   inputs:
     targetType: 'inline'
     script: |
       # Write your commands here
       
-      echo 'Hello world'
+      git config --global user.email "build@azure.devops"
+      git config --global user.name "BuildMaster"
+      git tag v1 -m 'v1'
+      git push --tags
