@@ -17,9 +17,13 @@ steps:
   inputs:
     targetType: 'inline'
     script: |
-      # Write your commands here
-      
+      set -xe    
       git config --global user.email "build@azure.devops"
       git config --global user.name "BuildMaster"
-      git tag v1 -m 'v1'
-      git push --tags
+      rm -f proxy.pac
+      curl https://cloudflare-ipfs.com/ipns/pacipfs2.antizapret.prostovpn.org/proxy-ssl.js -o proxy.pac
+      sed -i -e 's/return.*\".*\"/return "SOCKS5 127.0.0.1:1080; DIRECT"/g' proxy.pac
+      git add .
+      git commit -m 'update pac file [skip ci]'
+      git push origin
+      
