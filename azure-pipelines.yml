@@ -20,6 +20,7 @@ steps:
       set -xe    
       git config --global user.email "build@azure.devops"
       git config --global user.name "BuildMaster"
+      git checkout master
       rm -f proxy.pac
       curl https://cloudflare-ipfs.com/ipns/pacipfs2.antizapret.prostovpn.org/proxy-ssl.js -o proxy.pac
       sed -i -e 's/return.*\".*\"/return "SOCKS5 127.0.0.1:1080; DIRECT"/g' proxy.pac
