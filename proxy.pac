@@ -1,5 +1,5 @@
 // ProstoVPN.AntiZapret PAC-host File
-// Generated on Sat Feb 22 22:19:19 MSK 2020
+// Generated on Sun Feb 23 16:07:41 MSK 2020
 // NOTE 1: Proxy.pac file content varies on User-Agent HTTP header.
 // NOTE 2: Some badly behaving User-Agents are banned, they get empty response.
 // NOTE 3: Do not request PAC file faster than once a minute, rate limiting is applied.
