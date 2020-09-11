@@ -22,8 +22,8 @@ steps:
       git config --global user.name "BuildMaster"
       git checkout master
       rm -f proxy.pac
-      curl https://cloudflare-ipfs.com/ipns/pacipfs2.antizapret.prostovpn.org/proxy-ssl.js -o proxy.pac
-      sed -i -e 's/return.*\".*\"/return "SOCKS5 127.0.0.1:1080; DIRECT"/g' proxy.pac
+      curl -L https://antizapret.prostovpn.org/proxy.pac -o proxy.pac
+      sed -i -e 's/return.*\"PROXY.*\"/return "SOCKS5 127.0.0.1:1080; DIRECT"/g' proxy.pac
       git add .
       if [[ `git status --porcelain --untracked-files=no` ]]; then
         git commit -m 'update pac file [skip ci]'
